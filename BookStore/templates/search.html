@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BookStore - Search Books</title>
+    <link rel="stylesheet" href="{% static 'search.css' %}" />
+</head>
+<body>
+
+    <h2>Search Books</h2>
+
+    <form method="get">
+      {{ form.as_p }}
+      <button type="submit">Search</button>
+    </form>
+
+    <hr />
+
+    <h3>Results:</h3>
+    <ul>
+      {% for book in books %}
+        <li>
+          {{ book.title }} by {{ book.author.first_name }} {{ book.author.last_name }}
+          ({{ book.genre.get_category_display }})
+        </li>
+      {% empty %}
+        <li>No books found.</li>
+      {% endfor %}
+    </ul>
+
+    <hr />
+
+    <h3>Books Count by Genre:</h3>
+    <ul>
+      {% for stat in genre_stats %}
+        <li>{{ stat.genre__category }}: {{ stat.total }} book(s)</li>
+      {% empty %}
+        <li>No statistics available.</li>
+      {% endfor %}
+    </ul>
+
+</body>
+</html>
