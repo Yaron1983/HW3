@@ -3,7 +3,7 @@ import django
 import random
 from django.utils import timezone
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project_name.settings')  # החלף לשם הפרויקט שלך
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BookStore.settings')  # החלף לשם הפרויקט שלך
 django.setup()
 
 from library.models import Author, Genre, Book
